@@ -1,0 +1,379 @@
+/* 1. ЗМІННІ ТА ТЕМИ */
+:root {
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --input-bg: #ffffff;
+    --input-border: #dddddd;
+    --explanation-bg: #fff9db;
+    --explanation-border: #f1c40f;
+    --title-color: #2c3e50;
+    --accent-color: #3498db;
+    --success-color: #2ecc71;
+    --error-color: #e74c3c;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #121212;
+        --card-bg: #1e1e1e;
+        --text-color: #e0e0e0;
+        --input-bg: #2d2d2d;
+        --input-border: #444444;
+        --explanation-bg: #2d2d2d;
+        --explanation-border: #f1c40f;
+        --title-color: #90caf9;
+        --accent-color: #2980b9;
+    }
+}
+
+/* 2. ЗАГАЛЬНІ СТИЛІ */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+#auth-section, #app-section {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--input-border);
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-info {
+    color: var(--text-color);
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.main-title {
+    color: var(--title-color);
+    margin: 0;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* 3. ФОРМИ ТА КНОПКИ */
+.login-box, .form-container {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+}
+
+.login-box { 
+    text-align: center; 
+    margin-top: 80px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    background: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--accent-color);
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.input-group input {
+    flex: 2;
+    min-width: 200px;
+}
+
+.input-group select {
+    flex: 1;
+    min-width: 120px;
+}
+
+.test-inputs {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.test-inputs input {
+    flex: 1;
+    background: #222;
+    color: white;
+    border-color: #444;
+}
+
+.add-btn, .action-btn, #logout-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.add-btn, .action-btn { 
+    background-color: var(--accent-color); 
+    color: white;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.add-btn:hover, .action-btn:hover { 
+    opacity: 0.9; 
+}
+
+.add-btn:disabled, .action-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.login-wide {
+    width: 100%;
+}
+
+#logout-btn { 
+    background-color: var(--error-color); 
+    color: white; 
+}
+
+#logout-btn:hover { 
+    background-color: #c0392b; 
+}
+
+.error-text {
+    color: var(--error-color);
+    font-size: 0.9em;
+    margin: 5px 0;
+}
+
+.switch-text {
+    color: var(--accent-color);
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 0.9em;
+}
+
+.switch-text:hover {
+    text-decoration: underline;
+}
+
+/* 4. КАРТКИ ЗАДАЧ */
+.task-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 6px solid #ccc;
+}
+
+.task-card:hover { 
+    transform: translateY(-2px); 
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1); 
+}
+
+.task-card.completed {
+    border-left-color: var(--success-color);
+    background-color: rgba(46, 204, 113, 0.05);
+}
+
+.task-card h3 {
+    margin: 0 0 10px 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* 5. ПОЯСНЕННЯ (EXPLANATION) */
+.explanation-container {
+    background: var(--explanation-bg);
+    border-left: 4px solid var(--explanation-border);
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 6px;
+}
+
+.explanation-container summary {
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--explanation-border);
+    outline: none;
+}
+
+.explanation-content {
+    text-align: left; 
+    white-space: pre-line; 
+    padding: 0;
+    margin: 10px 0 0 0;
+    font-size: 0.95em;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+/* 6. РЕДАКТОР КОДУ */
+.code-container {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+    border: 1px solid #333;
+}
+
+.code-editor {
+    width: 100%;
+    min-height: 120px;
+    background-color: #0d0d0d !important;
+    color: #00ff41 !important;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    outline: none;
+    resize: vertical;
+    margin-bottom: 15px;
+}
+
+.code-editor:focus {
+    border-color: #00ff41;
+    box-shadow: 0 0 8px rgba(0, 255, 65, 0.2);
+}
+
+.code-editor::placeholder {
+    color: #004411;
+}
+
+/* 7. ДОПОМІЖНІ ЕЛЕМЕНТИ */
+.badge {
+    background: rgba(0,0,0,0.05);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    color: #7f8c8d;
+    font-weight: normal;
+}
+
+.grade-badge {
+    background: var(--accent-color);
+    color: white;
+}
+
+.controls { 
+    margin-bottom: 20px; 
+}
+
+.filter-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.filter-row select {
+    flex: 1;
+    margin: 0;
+}
+
+.status-message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.status-message.success {
+    background: rgba(0, 255, 65, 0.1);
+    border: 1px solid #00ff41;
+    color: #00ff41;
+}
+
+.status-message.error {
+    background: rgba(255, 65, 54, 0.1);
+    border: 1px solid #ff4136;
+    color: #ff4136;
+}
+
+.status-message b {
+    text-decoration: underline;
+}
+
+.loader-box {
+    text-align: center;
+    padding: 50px;
+}
+
+.loader-text {
+    color: #ffcc00;
+    font-size: 1.2em;
+}
+
+.loader-subtext {
+    color: #666;
+    font-size: 0.9em;
+}
+
+/* 8. RESPONSIVE */
+@media (max-width: 600px) {
+    .main-title {
+        font-size: 1.5rem;
+    }
+    
+    .header-flex {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .header-right {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .test-inputs {
+        flex-direction: column;
+    }
+    
+    .filter-row {
+        flex-direction: column;
+    }
+}
